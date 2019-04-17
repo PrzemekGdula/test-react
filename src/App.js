@@ -1,25 +1,37 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
 class App extends Component {
+  state = {
+    data: [],
+    newData: '',
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+      <div>
+        <input
+          value={this.state.newData}
+          onChange={event => this.setState({
+            data: this.state.data,
+            newData: event.target.value,
+          })}
+        />
+        <button
+          onClick={event => this.setState({
+            data: this.state.data.concat(this.state.newData),
+            newData: '',
+          })}
+        >
+          Dodaj
+        </button>
+        <ol>
+        {
+          this.state.data.map((string, index) => (
+            <li>
+              {this.state.data}
+            </li>
+          )).reverse()
+        }
+        </ol>
       </div>
     );
   }
